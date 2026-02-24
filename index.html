@@ -219,144 +219,141 @@
             color: var(--bg-dark);
             border: none;
         }
-        /* CTA & Form */
+        /* Stepper & Action Flow */
         .cta-section {
             display: flex;
             justify-content: center;
             margin-bottom: 80px;
         }
-        .form-container {
+        .stepper-container {
+            width: 100%;
+            max-width: 600px;
+        }
+        .stepper-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .stepper-header h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        .form-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+        .steps-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .step-card {
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
-            border-radius: 32px;
-            padding: 48px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border-radius: 24px;
+            padding: 24px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
             position: relative;
             overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-        }
-        .form-container h2 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            text-align: center;
-        }
-        .form-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            font-size: 0.9rem;
-        }
-        .form-subtitle strong {
-            color: var(--text-primary);
-        }
-        .input-group {
-            position: relative;
-            margin-bottom: 20px;
-        }
-        .input-group i {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-        input {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border-color);
-            padding: 16px 16px 16px 48px;
-            border-radius: 16px;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
-        }
-        input:focus {
+        .step-card.active {
             border-color: var(--accent-primary);
-            background: rgba(30, 240, 152, 0.05);
-            box-shadow: 0 0 0 4px rgba(30, 240, 152, 0.1);
+            box-shadow: 0 10px 30px rgba(30, 240, 152, 0.1);
+            transform: scale(1.02);
+            z-index: 2;
         }
-        input:focus+i,
-        input:not(:placeholder-shown)+i {
-            color: var(--accent-primary);
+        .step-card.disabled {
+            opacity: 0.4;
+            pointer-events: none;
+            filter: grayscale(100%);
         }
-        .error-msg {
-            color: var(--error);
-            font-size: 0.85rem;
-            margin-top: -12px;
-            margin-bottom: 20px;
-            display: none;
-            animation: fadeIn 0.3s ease;
+        .step-card.completed {
+            border-color: rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+            background: rgba(10, 12, 16, 0.4);
         }
-        .submit-btn {
-            width: 100%;
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        .step-card.active .step-number {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px rgba(30, 240, 152, 0.4);
+        }
+        .step-card.completed .step-number {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .step-content {
+            flex-grow: 1;
+        }
+        .step-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        .step-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .step-card.active .action-btn {
             background: var(--accent-primary);
             color: var(--bg-dark);
+            border-color: var(--accent-primary);
+        }
+        .step-card.active .action-btn.final-btn {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             border: none;
-            padding: 18px;
-            border-radius: 16px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-            margin-top: 10px;
         }
-        .submit-btn:hover {
-            background: var(--accent-hover);
+        .step-card.active .action-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px var(--glow);
+            box-shadow: 0 8px 20px rgba(30, 240, 152, 0.2);
         }
-        .submit-btn:active {
-            transform: translateY(0);
+        .action-btn.disabled-btn {
+            pointer-events: none;
         }
-        .slots-left {
-            margin-top: 24px;
-            text-align: center;
-        }
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin-bottom: 8px;
-            overflow: hidden;
-        }
-        .progress {
-            height: 100%;
-            background: linear-gradient(90deg, #ff5e5e, #ffa726);
-            border-radius: 10px;
-        }
-        .slots-left p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-        .slots-left i {
-            color: #ffa726;
+        .action-btn.btn-success {
+            background: rgba(30, 240, 152, 0.1) !important;
+            color: var(--accent-primary) !important;
+            border-color: rgba(30, 240, 152, 0.3) !important;
+            box-shadow: none !important;
+            transform: none !important;
+            pointer-events: none;
         }
         /* Footer */
         footer {
-            margin-top: auto;
             padding: 24px 0;
             text-align: center;
             color: var(--text-secondary);
@@ -479,42 +476,49 @@
                 </div>
             </div>
             <div class="cta-section fade-in-up delay-3">
-                <div class="form-container">
-                    <h2>Test Programına Katıl</h2>
-                    <p class="form-subtitle">Google Play test daveti için geçerli bir <strong>@gmail.com</strong> adresi
-                        gereklidir.</p>
-                    <!-- SİZİN Web3Forms ENTEGRASYONUNUZ EKLENDİ -->
-                    <form action="https://api.web3forms.com/submit" method="POST" id="betaForm">
-                        <input type="hidden" name="access_key" value="afb091d9-b1bf-4ab6-a41c-24c652ad0c21">
-                        <input type="hidden" name="subject" value="Yeni FinansApp Beta Test Daveti Görüntülendi">
-                        <!-- Başarılı gönderimden sonra varsayılan web3forms teşekkür sayfasına yönlendirir -->
-                        <input type="hidden" name="redirect" value="https://web3forms.com/success">
-                        <div class="input-group">
-                            <i class="fa-regular fa-user"></i>
-                            <input type="text" name="name" id="name" placeholder="Adınız Soyadınız" required>
+                <div class="stepper-container">
+                    <div class="stepper-header">
+                        <h2>Anında Teste Başla</h2>
+                        <p class="form-subtitle">Sadece 3 basit adımı tamamlayarak anında uygulamamızı test
+                            edebilirsiniz. Beklemek yok!</p>
+                    </div>
+                    <div class="steps-wrapper">
+                        <!-- Adım 1 -->
+                        <div class="step-card active" id="step1">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Google Grubumuza Katılın</h3>
+                                <p>Test yetkisi almak için öncelikle test grubumuza katılmalısınız.</p>
+                                <a href="https://groups.google.com/g/testerslocal" target="_blank" class="action-btn"
+                                    id="btnStep1" onclick="completeStep(1)">
+                                    <i class="fa-solid fa-users"></i> Gruba Katıl
+                                </a>
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <i class="fa-brands fa-google"></i>
-                            <input type="email" name="email" id="email"
-                                placeholder="Google Hesap E-postanız (örn: isminiz@gmail.com)" required>
+                        <!-- Adım 2 -->
+                        <div class="step-card disabled" id="step2">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Test Programına Onay Verin</h3>
+                                <p>Gruba katıldıktan sonra bu butona tıklayarak Google Play üzerinden testçi olun.</p>
+                                <a href="https://play.google.com/apps/testing/com.bilgin.finans" target="_blank"
+                                    class="action-btn disabled-btn" id="btnStep2" onclick="completeStep(2)">
+                                    <i class="fa-solid fa-check-shield"></i> Testçi Ol
+                                </a>
+                            </div>
                         </div>
-                        <!-- Kullanıcının isteğine göre mesaj alanı eklendi - İsterseniz HTML gizli özelliğini devre dışı bırakın -->
-                        <div class="input-group" style="display:none;">
-                            <textarea name="message">Kapalı Test programınıza katılmak istiyorum.</textarea>
+                        <!-- Adım 3 -->
+                        <div class="step-card disabled" id="step3">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Uygulamayı İndirin</h3>
+                                <p>Artık her şey hazır! Google Play Store'dan uygulamamızı indirip deneyebilirsiniz.</p>
+                                <a href="https://play.google.com/store/apps/details?id=com.bilgin.finans"
+                                    target="_blank" class="action-btn final-btn disabled-btn" id="btnStep3">
+                                    <i class="fa-brands fa-google-play"></i> Google Play'den İndir
+                                </a>
+                            </div>
                         </div>
-                        <div class="error-msg" id="emailError">Lütfen geçerli bir @gmail.com adresi girin.</div>
-                        <!-- Spam koruması -->
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                        <button type="submit" class="submit-btn" id="submitBtn">
-                            <span>Davetiye İste</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </form>
-                    <div class="slots-left">
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 35%"></div>
-                        </div>
-                        <p><i class="fa-solid fa-fire"></i> Sadece <strong>13</strong> kişilik boş kontenjan kaldı!</p>
                     </div>
                 </div>
             </div>
@@ -526,50 +530,10 @@
     <!-- JavaScript Kodları Buraya Eklendi -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('betaForm');
-            const emailInput = document.getElementById('email');
-            const errorMsg = document.getElementById('emailError');
-            const submitBtn = document.getElementById('submitBtn');
-            // Email Validation Pattern (must end with @gmail.com)
-            const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-            // Real-time validation
-            emailInput.addEventListener('input', () => {
-                if (emailInput.value.length > 0 && !gmailPattern.test(emailInput.value.toLowerCase())) {
-                    errorMsg.style.display = 'block';
-                    submitBtn.style.opacity = '0.5';
-                    submitBtn.style.pointerEvents = 'none';
-                } else {
-                    errorMsg.style.display = 'none';
-                    submitBtn.style.opacity = '1';
-                    submitBtn.style.pointerEvents = 'auto';
-                }
-            });
-            // Form Submission Handling
-            form.addEventListener('submit', (e) => {
-                const emailValue = emailInput.value.toLowerCase();
-                // Final check before submission
-                if (!gmailPattern.test(emailValue)) {
-                    e.preventDefault(); // Prevent submission
-                    errorMsg.style.display = 'block';
-                    emailInput.focus();
-                    // Add shake animation
-                    emailInput.style.animation = 'shake 0.5s ease';
-                    setTimeout(() => {
-                        emailInput.style.animation = '';
-                    }, 500);
-                    return false;
-                }
-                // If valid, change button state
-                const btnText = submitBtn.querySelector('span');
-                const btnIcon = submitBtn.querySelector('i');
-                submitBtn.style.background = '#00d2ff'; // Change to secondary color
-                btnText.textContent = 'İşleniyor...';
-                btnIcon.className = 'fa-solid fa-spinner fa-spin';
-            });
             // Add optional cursor glow effect for desktop
             if (window.matchMedia("(min-width: 768px)").matches) {
                 document.addEventListener('mousemove', (e) => {
-                    const cards = document.querySelectorAll('.feature-card');
+                    const cards = document.querySelectorAll('.feature-card, .step-card');
                     cards.forEach(card => {
                         const rect = card.getBoundingClientRect();
                         const x = e.clientX - rect.left;
@@ -578,10 +542,9 @@
                         card.style.setProperty('--mouse-y', `${y}px`);
                     });
                 });
-                // Add this CSS variable effect physically via JS
                 const style = document.createElement('style');
                 style.innerHTML = `
-                    .feature-card::before {
+                    .feature-card::before, .step-card::before {
                         content: "";
                         position: absolute;
                         top: 0; left: 0; width: 100%; height: 100%;
@@ -595,13 +558,40 @@
                         opacity: 0;
                         transition: opacity 0.3s;
                     }
-                    .feature-card:hover::before {
+                    .feature-card:hover::before, .step-card:hover::before {
                         opacity: 1;
                     }
                 `;
                 document.head.appendChild(style);
             }
         });
+        // Adım Adım İlerleme Mantığı (Stepper Logic)
+        function completeStep(stepId) {
+            const currentBtn = document.getElementById('btnStep' + stepId);
+            const currentCard = document.getElementById('step' + stepId);
+            // Eğer butona daha önce tıklanıp aktif edildiyse, tekrar aynı işlemleri yapma
+            if (currentCard.classList.contains('completed')) return;
+            // Butonu ve kartı tamamlandı olarak işaretle
+            currentCard.classList.add('completed');
+            currentCard.classList.remove('active');
+            // Butonun ikonunu check işaretine çevir ve rengini değiştir
+            currentBtn.innerHTML = '<i class="fa-solid fa-check"></i> Tamamlandı';
+            currentBtn.classList.add('btn-success');
+            // Bir sonraki adımı aç (eğer varsa)
+            const nextStepId = stepId + 1;
+            const nextCard = document.getElementById('step' + nextStepId);
+            const nextBtn = document.getElementById('btnStep' + nextStepId);
+            if (nextCard && nextBtn) {
+                // Küçük bir gecikme ile sonraki adımı aç, UX açısından daha akıcı olur
+                setTimeout(() => {
+                    nextCard.classList.remove('disabled');
+                    nextCard.classList.add('active');
+                    nextBtn.classList.remove('disabled-btn');
+                    // Ekranı açılan yeni adıma hafifçe kaydır (mobilde kullanışlıdır)
+                    nextCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 800); // Kullanıcı yeni sekmeye gidip dönerken aradan geçen süreyi simüle eder
+            }
+        }
     </script>
 </body>
 </html>
