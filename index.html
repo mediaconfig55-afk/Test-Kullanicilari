@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finans Uygulaması | Kapalı Beta Test Uzmanı Ol</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Geliştirici Uyarısı -->
+    <div class="developer-badge">
+        <i class="fa-solid fa-code"></i> Geliştirici Aşamasında
+    </div>
+
+    <div class="background-effects">
+        <div class="glow-orb primary"></div>
+        <div class="glow-orb secondary"></div>
+    </div>
+
+    <div class="container">
+
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-wallet"></i>
+                <span>Finans<span class="highlight">App</span></span>
+            </div>
+            <div class="beta-tag">BETA v1.0.0</div>
+        </header>
+
+        <main>
+            <div class="hero">
+                <h1 class="fade-in-up">Yeni Nesil Cüzdanınızı<br><span class="gradient-text">İlk Siz Deneyimleyin</span>
+                </h1>
+                <p class="subtitle fade-in-up delay-1">
+                    Gelir gider takibi ve dijital cüzdan yönetimini yeniden tanımlıyoruz. Google Play Kapalı Test
+                    sürecimize katılarak uygulamamıza yön veren 20 özel test uzmanından biri olun.
+                </p>
+            </div>
+
+            <div class="features-grid fade-in-up delay-2">
+                <div class="feature-card">
+                    <div class="icon-wrapper"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h3>Akıllı Analiz</h3>
+                    <p>Harcamalarınızı otomatik kategorize eder, nereye ne kadar harcadığınızı net şekilde gösterir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrapper"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                    <h3>Kolay Takip</h3>
+                    <p>Günlük gelir ve giderlerinizi saniyeler içinde kaydedin, bütçenizi asla aşmayın.</p>
+                </div>
+                <div class="feature-card highlight-card">
+                    <div class="icon-wrapper"><i class="fa-solid fa-crown"></i></div>
+                    <h3>Özel Ayrıcalıklar</h3>
+                    <p>Test uzmanlarımız, tam sürümde her zaman uygulamanın özel VIP özelliklerine sahip olacak.</p>
+                </div>
+            </div>
+
+            <div class="cta-section fade-in-up delay-3">
+                <div class="form-container">
+                    <h2>Test Programına Katıl</h2>
+                    <p class="form-subtitle">Google Play test daveti için geçerli bir <strong>@gmail.com</strong> adresi
+                        gereklidir.</p>
+
+                    <!-- Web3Forms Entegrasyonu -->
+                    <form action="https://api.web3forms.com/submit" method="POST" id="betaForm">
+                        <!-- Buraya kendi Web3Forms Access Key'inizi gireceksiniz (ücretsiz alabilirsiniz) -->
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="hidden" name="subject" value="Yeni FinansApp Beta Test Başvurusu">
+                        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+                        <div class="input-group">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" name="name" id="name" placeholder="Adınız Soyadınız" required>
+                        </div>
+
+                        <div class="input-group">
+                            <i class="fa-brands fa-google"></i>
+                            <input type="email" name="email" id="email"
+                                placeholder="Google Hesap E-postanız (örn: isminiz@gmail.com)" required>
+                        </div>
+
+                        <div class="error-msg" id="emailError">Lütfen geçerli bir @gmail.com adresi girin.</div>
+
+                        <!-- Spam koruması -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span>Davetiye İste</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    <div class="slots-left">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 35%"></div>
+                        </div>
+                        <p><i class="fa-solid fa-fire"></i> Sadece <strong>13</strong> kişilik boş kontenjan kaldı!</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 FinansApp Geliştirme Ekibi. Google Play kapalı test prosedürlerine uygundur.</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
